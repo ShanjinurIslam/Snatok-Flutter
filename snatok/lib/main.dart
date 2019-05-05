@@ -37,8 +37,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       routes: {
         '/' : (BuildContext context)=> AuthPageView(),
-        '/home':         (BuildContext context) => new HomePage(products,_add,_deleteAd),
-        '/manageads':         (BuildContext context) => new AdManagement(),
+        '/home':         (BuildContext context) => new HomePage(products),
+        '/manageads':         (BuildContext context) => new AdManagement(_add,_deleteAd),
       },
       theme: ThemeData(primarySwatch: Colors.green,brightness: Brightness.dark),
       onGenerateRoute: (RouteSettings settings){

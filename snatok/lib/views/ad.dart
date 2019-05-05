@@ -23,7 +23,7 @@ class SingleAd extends StatelessWidget {
               child: Text(value),
               margin: EdgeInsets.all(20),
             )),
-            Center(
+            /*Center(
               child: FlatButton(
                 child: Text(
                   'Delete',
@@ -55,7 +55,7 @@ class SingleAd extends StatelessWidget {
                       context: context);
                 },
               ),
-            )
+            )*/
           ],
         ),
       ),

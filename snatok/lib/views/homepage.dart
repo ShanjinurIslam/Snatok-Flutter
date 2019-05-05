@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'ads_manager.dart';
 
 class HomePage extends StatefulWidget {
-  final List<Map<String,String>> products ; 
-  final Function _add ;
-  final Function _deleteAd ;
+  final List<Map<String,String>> products ;
 
-  HomePage(this.products,this._add,this._deleteAd) ;
+  HomePage(this.products) ;
 
   @override
   State<StatefulWidget> createState() {
@@ -45,7 +43,7 @@ class _HomeState extends State<HomePage> {
       appBar: AppBar(
         title: Text('HomePage'),
       ),
-      body: Center(child: AdsManager(widget.products,widget._add,widget._deleteAd)),
+      body: Center(child: AdsManager(widget.products)),
     );
   }
 }

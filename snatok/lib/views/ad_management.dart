@@ -3,7 +3,11 @@ import 'create_ad.dart';
 import 'manage_ad.dart';
 
 class AdManagement extends StatelessWidget {
-  @override
+  Function _add; 
+  Function _deleteAd;
+
+  AdManagement(this._add,this._deleteAd) ;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -32,7 +36,7 @@ class AdManagement extends StatelessWidget {
           ),
           body: Center(child: TabBarView(
             children: <Widget>[
-              CreateAd(),ManageAd()
+              CreateAd(_add),ManageAd(_deleteAd)
             ],
           )),
           bottomNavigationBar: TabBar(tabs: <Widget>[

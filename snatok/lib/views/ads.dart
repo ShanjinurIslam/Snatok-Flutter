@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class Ads extends StatelessWidget {
   final List<Map<String, String>> products;
-  final Function _deleteAd;
-  Ads(this.products, this._deleteAd);
+  Ads(this.products);
 
   Widget _listBuilderFunction(BuildContext context, int index) {
     return Card(
@@ -23,13 +22,7 @@ class Ads extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               onPressed: () {
-                Navigator.pushNamed<bool>(context, '/ad/'+index.toString()).then((value) {
-                  if (value != null) {
-                    if (value == true) {
-                      _deleteAd(index);
-                    }
-                  }
-                });
+                Navigator.pushNamed(context, '/ad/' + index.toString());
               },
             ),
           )
