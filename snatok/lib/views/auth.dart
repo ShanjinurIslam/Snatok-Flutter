@@ -7,7 +7,7 @@ class AuthPageView extends StatelessWidget {
       appBar: AppBar(
         title: Text('Log In'),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           Container(
             margin: EdgeInsets.all(10),
@@ -45,15 +45,13 @@ class AuthPageView extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/home') ;
+                  Navigator.pushReplacementNamed(context, '/home');
                 },
                 color: Colors.green,
               )
             ],
           ),
         ],
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
       ),
     );
   }
