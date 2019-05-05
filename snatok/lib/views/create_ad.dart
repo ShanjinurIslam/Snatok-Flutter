@@ -10,7 +10,7 @@ class CreateAd extends StatefulWidget {
 class _CreateAdState extends State<CreateAd> {
   String title = "";
   String description = "";
-  String topic = "";
+  String location = "";
   double price = 0;
 
   Widget buildTextField(String fieldName,
@@ -46,7 +46,7 @@ class _CreateAdState extends State<CreateAd> {
         buildTextField('description', maxLine: 2, m: description),
         buildTextField(
           'location',
-          m: topic,
+          m: location,
         ),
         buildTextField('price', m: "", p: price, t: TextInputType.number),
         RaisedButton(
