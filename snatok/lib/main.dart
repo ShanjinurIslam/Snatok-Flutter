@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
         '/home':         (BuildContext context) => new HomePage(products),
         '/manageads':         (BuildContext context) => new AdManagement(_add,_deleteAd),
       },
-      theme: ThemeData(primarySwatch: Colors.green,brightness: Brightness.dark,),
+      theme: ThemeData(primarySwatch: Colors.green,brightness: Brightness.dark,accentColor: Colors.redAccent),
       onGenerateRoute: (RouteSettings settings){
         final List<String> elements = settings.name.split('/');
         

@@ -11,15 +11,39 @@ class Ads extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Image.asset(products[index]['image']),
+          Image.asset(products[index]['image'],
+              fit: BoxFit.cover, alignment: Alignment.center),
           SizedBox(
             height: 10,
           ),
           Container(
             margin: EdgeInsets.all(10),
-            child: Text(
-              products[index]['title'],
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold,fontFamily: 'Oswald'),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  products[index]['title'],
+                  style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Oswald'),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 6.0,vertical: 2.5),
+                  child: Text(
+                    "\৳" + products[index]['price'].toString(),
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Theme.of(context).accentColor,
+
+                  ),
+                )
+              ],
             ),
           ),
           Container(
