@@ -93,13 +93,7 @@ class _CreateAdState extends State<CreateAd> {
               print(description);
               print(title);
               widget._add({'title': title, 'image': 'assets/1.jpg'});
-              showModalBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Center(
-                      child: Text('Success'),
-                    );
-                  });
+              Navigator.pushReplacementNamed(context, '/home') ;
             },
           ),
         )

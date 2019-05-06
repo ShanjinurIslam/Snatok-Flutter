@@ -9,10 +9,19 @@ class Ads extends StatelessWidget {
       margin: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
+          SizedBox(
+            height: 10,
+          ),
           Image.asset(products[index]['image']),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             margin: EdgeInsets.all(10),
-            child: Text(products[index]['title']),
+            child: Text(
+              products[index]['title'],
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold,fontFamily: 'Oswald'),
+            ),
           ),
           Container(
             margin: EdgeInsets.all(5),
