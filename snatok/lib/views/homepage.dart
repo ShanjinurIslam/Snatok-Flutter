@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'ads_manager.dart';
 
 class HomePage extends StatefulWidget {
-  final List<Map<String,String>> products ;
+  final List<Map<String,dynamic>> products ;
 
   HomePage(this.products) ;
 

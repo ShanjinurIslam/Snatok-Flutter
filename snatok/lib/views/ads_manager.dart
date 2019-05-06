@@ -4,7 +4,7 @@ import 'ads_control.dart';
 
 
 class AdsManager extends StatelessWidget {
-  final List<Map<String,String>> products ; 
+  final List<Map<String,dynamic>> products ; 
 
   AdsManager(this.products) ;
 

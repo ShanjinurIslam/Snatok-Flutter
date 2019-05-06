@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Ads extends StatelessWidget {
-  final List<Map<String, String>> products;
+  final List<Map<String, dynamic>> products;
   Ads(this.products);
 
   Widget _listBuilderFunction(BuildContext context, int index) {
     return Card(
-      margin: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
           SizedBox(

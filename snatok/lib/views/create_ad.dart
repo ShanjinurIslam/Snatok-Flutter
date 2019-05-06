@@ -92,8 +92,13 @@ class _CreateAdState extends State<CreateAd> {
             onPressed: () {
               print(description);
               print(title);
-              widget._add({'title': title, 'image': 'assets/1.jpg'});
-              Navigator.pushReplacementNamed(context, '/home') ;
+              widget._add({
+                'title': title,
+                'image': 'assets/1.jpg',
+                'location': location,
+                'price': price
+              });
+              Navigator.pushReplacementNamed(context, '/home');
             },
           ),
         )

@@ -14,13 +14,13 @@ class MyApp extends StatefulWidget{
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Map<String,String>> products = [] ;
+  List<Map<String,dynamic>> products = [] ;
 
   void initState() {
     super.initState();
   }
 
-  void _add(Map<String,String> product) {
+  void _add(Map<String,dynamic> product) {
     setState(() {
       products.add(product);
     });
@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
         '/home':         (BuildContext context) => new HomePage(products),
         '/manageads':         (BuildContext context) => new AdManagement(_add,_deleteAd),
       },
-      theme: ThemeData(primarySwatch: Colors.green,brightness: Brightness.dark),
+      theme: ThemeData(primarySwatch: Colors.green,brightness: Brightness.dark,),
       onGenerateRoute: (RouteSettings settings){
         final List<String> elements = settings.name.split('/');
         
