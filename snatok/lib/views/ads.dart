@@ -33,22 +33,28 @@ class Ads extends StatelessWidget {
                   width: 10,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6.0,vertical: 2.5),
+                  padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
                   child: Text(
                     "\৳" + products[index]['price'].toString(),
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: Theme.of(context).accentColor,
-
                   ),
                 )
               ],
             ),
           ),
           Container(
-            margin: EdgeInsets.all(5),
-            child: RaisedButton(
+            padding: EdgeInsets.symmetric(horizontal: 6,vertical: 2.5),
+            decoration: BoxDecoration(border: Border.all(color: Colors.white,width: 1.5),borderRadius: BorderRadius.circular(20)),
+            child: Text('Dhaka,Bangladesh',style: TextStyle(fontWeight: FontWeight.bold),),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            decoration: BoxDecoration(
+                color: Colors.green, borderRadius: BorderRadius.circular(12)),
+            child: FlatButton(
               child: Text(
                 'Details',
                 style: TextStyle(color: Colors.white),
@@ -57,6 +63,9 @@ class Ads extends StatelessWidget {
                 Navigator.pushNamed(context, '/ad/' + index.toString());
               },
             ),
+          ),
+          SizedBox(
+            height: 10,
           )
         ],
       ),
