@@ -69,7 +69,6 @@ class _CreateAdState extends State<CreateAd> {
           ),
           margin: EdgeInsets.all(20),
         ),
-
         Container(
           child: TextField(
             autofocus: true,
@@ -84,20 +83,25 @@ class _CreateAdState extends State<CreateAd> {
           ),
           margin: EdgeInsets.all(20),
         ),
-        RaisedButton(
-          child: Text('Add Product'),
-          onPressed: () {
-            print(description);
-            print(title);
-            widget._add({'title': title, 'image': 'assets/1.jpg'});
-            showModalBottomSheet(
-                context: context,
-                builder: (BuildContext context) {
-                  return Center(
-                    child: Text('Success'),
-                  );
-                });
-          },
+        Container(
+          margin: EdgeInsets.all(20),
+          child: RaisedButton(
+            child: Text('Add Product'),
+            color: Colors.red,
+            textColor: Colors.white,
+            onPressed: () {
+              print(description);
+              print(title);
+              widget._add({'title': title, 'image': 'assets/1.jpg'});
+              showModalBottomSheet(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Center(
+                      child: Text('Success'),
+                    );
+                  });
+            },
+          ),
         )
       ],
     ));
