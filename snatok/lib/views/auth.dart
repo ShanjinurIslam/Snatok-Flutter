@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 
-class AuthPageView extends StatelessWidget {
+class AuthPageView extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _AuthPageState();
+  }
+}
+
+class _AuthPageState extends State<AuthPageView> {
+  String username;
+  String password;
+  bool acceptTerms = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,11 +20,14 @@ class AuthPageView extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(10),
-            child: Text(
-              'স্নাতক',
-              style: TextStyle(fontSize: 40),
+          SizedBox(height: 10,),
+          Center(
+            child: Container(
+              margin: EdgeInsets.all(10),
+              child: Text(
+                'স্নাতক',
+                style: TextStyle(fontSize: 40),
+              ),
             ),
           ),
           Container(
@@ -23,7 +37,7 @@ class AuthPageView extends StatelessWidget {
                 decoration: InputDecoration(hintText: 'Username'),
                 onChanged: (String value) {},
               ),
-              widthFactor: 0.75,
+              widthFactor: 0.85,
             ),
           ),
           Container(
@@ -33,7 +47,19 @@ class AuthPageView extends StatelessWidget {
                 decoration: InputDecoration(hintText: 'Password'),
                 onChanged: (String value) {},
               ),
-              widthFactor: 0.75,
+              widthFactor: 0.85,
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(25,0,25,0),
+            child: SwitchListTile(
+              value: acceptTerms,
+              onChanged: (bool value) {
+                setState(() {
+                  acceptTerms = value;
+                });
+              },
+              title: Text('Remember me?'),
             ),
           ),
           ButtonBar(
