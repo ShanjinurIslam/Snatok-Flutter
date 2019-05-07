@@ -84,8 +84,6 @@ class _AuthPageState extends State<AuthPageView> {
   }
 
   void _logIn() {
-    print(username);
-    print(password);
     Navigator.pushReplacementNamed(context, '/home');
   }
 

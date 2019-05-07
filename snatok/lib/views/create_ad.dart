@@ -33,9 +33,7 @@ class _CreateAdState extends State<CreateAd> {
       },
       maxLines: 1,
       onSaved: (String value) {
-        setState(() {
           title = value;
-        });
       },
     );
   }
@@ -50,9 +48,7 @@ class _CreateAdState extends State<CreateAd> {
       decoration: InputDecoration(labelText: 'Description'),
       maxLines: 2,
       onSaved: (String value) {
-        setState(() {
           description = value;
-        });
       },
     );
   }
@@ -67,9 +63,7 @@ class _CreateAdState extends State<CreateAd> {
       },
       maxLines: 1,
       onSaved: (String value) {
-        setState(() {
           location = value;
-        });
       },
     );
   }
@@ -84,9 +78,7 @@ class _CreateAdState extends State<CreateAd> {
       },
       maxLines: 1,
       onSaved: (String value) {
-        setState(() {
           price = double.parse(value);
-        });
       },
     );
   }
