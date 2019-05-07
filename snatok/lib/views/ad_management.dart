@@ -21,8 +21,9 @@ class AdManagement extends StatelessWidget {
                   title: Text('Choose'),
                 ),
                 ListTile(
+                  leading: Icon(Icons.home),
                   title: Text(
-                    'HomePage',
+                    'Home',
                   ),
                   onTap: () {
                     Navigator.pushReplacementNamed(context, '/home');

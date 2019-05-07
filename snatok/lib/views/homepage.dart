@@ -27,9 +27,10 @@ class _HomeState extends State<HomePage> {
           children: <Widget>[
             AppBar(
               automaticallyImplyLeading: false,
-              title: Text('Choose'),
+              title: Text('Options'),
             ),
             ListTile(
+              leading: Icon(Icons.edit),
               title: Text(
                 'Manage Products',
               ),
@@ -41,7 +42,7 @@ class _HomeState extends State<HomePage> {
         ),
       ),
       appBar: AppBar(
-        title: Text('HomePage'),
+        title: Text('Home'),
       ),
       body: Center(child: AdsManager(widget.products)),
     );
