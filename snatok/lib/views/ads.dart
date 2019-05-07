@@ -46,14 +46,22 @@ class Ads extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 6,vertical: 2.5),
-            decoration: BoxDecoration(border: Border.all(color: Colors.white,width: 1.5),borderRadius: BorderRadius.circular(20)),
-            child: Text('Dhaka,Bangladesh',style: TextStyle(fontWeight: FontWeight.bold),),
+            padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2.5),
+            decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 1.5),
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.deepOrangeAccent),
+            child: Text(
+              'Dhaka,Bangladesh',
+              style: TextStyle(fontWeight: FontWeight.normal),
+            ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(30,20,30,10),
+            margin: EdgeInsets.fromLTRB(30, 20, 30, 10),
             decoration: BoxDecoration(
-                color: Colors.green, borderRadius: BorderRadius.circular(12)),
+                color: Colors.green,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: Colors.white)),
             child: FlatButton(
               child: Text(
                 'Details',

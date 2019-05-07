@@ -40,7 +40,8 @@ class _AuthPageState extends State<AuthPageView> {
                   child: TextField(
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)),
                         labelText: 'Username',
                         filled: true,
                         fillColor: Colors.white,
@@ -56,7 +57,8 @@ class _AuthPageState extends State<AuthPageView> {
                   child: TextField(
                     style: TextStyle(color: Colors.black),
                     decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12)),
                         labelText: 'Password',
                         filled: true,
                         fillColor: Colors.white,
@@ -78,20 +80,21 @@ class _AuthPageState extends State<AuthPageView> {
                   title: Text('Remember me?'),
                 ),
               ),
-              ButtonBar(
-                alignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  FlatButton(
-                    child: Text(
-                      'Log In',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/home');
-                    },
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
                     color: Colors.green,
-                  )
-                ],
+                    border: Border.all(color: Colors.white)),
+                child: FlatButton(
+                  child: Text(
+                    'Log In',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacementNamed(context, '/home');
+                  },
+                  color: Colors.green,
+                ),
               ),
             ],
           )),
