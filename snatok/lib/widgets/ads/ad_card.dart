@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
+import 'package:snatok/widgets/ui_elements/ad_title.dart';
+import 'package:snatok/widgets/ads/ad_address.dart';
 
-class AdCard extends StatelessWidget{
-  final Map<String,dynamic> product ;
-  final int index ;
+class AdCard extends StatelessWidget {
+  final Map<String, dynamic> product;
+  final int index;
 
-  AdCard(this.product,this.index) ;
+  AdCard(this.product, this.index);
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +28,7 @@ class AdCard extends StatelessWidget{
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  product['title'],
-                  style: TextStyle(
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Oswald'),
-                ),
+                AdTitle(product['title']),
                 SizedBox(
                   width: 10,
                 ),
@@ -40,17 +36,7 @@ class AdCard extends StatelessWidget{
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 6, vertical: 2.5),
-            decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 1.5),
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.deepOrangeAccent),
-            child: Text(
-              'Dhaka,Bangladesh',
-              style: TextStyle(fontWeight: FontWeight.normal),
-            ),
-          ),
+          AdAddress(product['location']),
           Container(
             margin: EdgeInsets.fromLTRB(30, 20, 30, 10),
             child: Row(
@@ -90,5 +76,4 @@ class AdCard extends StatelessWidget{
       ),
     );
   }
-
 }

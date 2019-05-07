@@ -46,6 +46,10 @@ class _HomeState extends State<HomePage> {
           IconButton(
             icon: Icon(Icons.favorite),
             onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.help),
+            onPressed: () {},
           )
         ],
       ),

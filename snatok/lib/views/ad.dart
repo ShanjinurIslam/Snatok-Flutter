@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
+import 'dart:async'; //for returning future values
+import 'package:snatok/widgets/ui_elements/ad_title.dart';
 
 class SingleAd extends StatelessWidget {
   final Map<String, dynamic> map;
@@ -16,47 +17,16 @@ class SingleAd extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Image.asset(map['image']),
-            Center(child: Container(child: Column(
+            Center(
+                child: Container(
+                    child: Column(
               children: <Widget>[
-                Text(map['title']),
+                AdTitle(map['title']),
                 Text(map['description']),
                 Text(map['location']),
                 Text(map['price'].toString()),
               ],
             ))),
-            /*Center(
-              child: FlatButton(
-                child: Text(
-                  'Delete',
-                  style: TextStyle(color: Colors.red),
-                ),
-                onPressed: () {
-                  showDialog(
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          actions: <Widget>[
-                            FlatButton(
-                              child: Text('Delete'),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                Navigator.pop(context, true);
-                              },
-                            ),
-                            FlatButton(
-                              child: Text('Continue'),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                          ],
-                          title: Text('Delete Ad'),
-                          content: Text('Are you sure?'),
-                        );
-                      },
-                      context: context);
-                },
-              ),
-            )*/
           ],
         ),
       ),
