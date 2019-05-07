@@ -92,7 +92,7 @@ class _AuthPageState extends State<AuthPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
+        body: GestureDetector(child:Container(
             decoration: BoxDecoration(image: _buildBackGroundImage()),
             child: Center(
               child: SingleChildScrollView(
@@ -131,6 +131,8 @@ class _AuthPageState extends State<AuthPageView> {
                   ),
                 ],
               ))),
-            )));
+            )),onTap: (){
+              FocusScope.of(context).requestFocus(FocusNode()) ;
+            },));
   }
 }

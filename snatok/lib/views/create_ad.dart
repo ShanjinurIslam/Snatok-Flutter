@@ -16,19 +16,23 @@ class _CreateAdState extends State<CreateAd> {
   String description = "default";
   String location = "default";
   double price = 0;
+  final GlobalKey<FormState> globalKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
   }
 
-  Widget buildTitleTextField() {
-    return TextField(
+  Widget buildTitleTextFormField() {
+    return TextFormField(
       autofocus: true,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(labelText: 'Title'),
+      validator: (String value) {
+        if (value.trim().length <= 0) return 'Title is required';
+      },
       maxLines: 1,
-      onChanged: (String value) {
+      onSaved: (String value) {
         setState(() {
           title = value;
         });
@@ -36,13 +40,16 @@ class _CreateAdState extends State<CreateAd> {
     );
   }
 
-  Widget buildDescriptionTextField() {
-    return TextField(
+  Widget buildDescriptionTextFormField() {
+    return TextFormField(
       autofocus: true,
       keyboardType: TextInputType.text,
+      validator: (String value) {
+        if (value.trim().length <= 0) return 'Description is required';
+      },
       decoration: InputDecoration(labelText: 'Description'),
       maxLines: 2,
-      onChanged: (String value) {
+      onSaved: (String value) {
         setState(() {
           description = value;
         });
@@ -50,13 +57,16 @@ class _CreateAdState extends State<CreateAd> {
     );
   }
 
-  Widget buildLocationTextField() {
-    return TextField(
+  Widget buildLocationTextFormField() {
+    return TextFormField(
       autofocus: true,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(labelText: 'Location'),
+      validator: (String value) {
+        if (value.trim().length <= 0) return 'Location is required';
+      },
       maxLines: 1,
-      onChanged: (String value) {
+      onSaved: (String value) {
         setState(() {
           location = value;
         });
@@ -64,13 +74,16 @@ class _CreateAdState extends State<CreateAd> {
     );
   }
 
-  Widget buildPriceTextField() {
-    return TextField(
+  Widget buildPriceTextFormField() {
+    return TextFormField(
       autofocus: true,
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: 'Price'),
+      validator: (String value) {
+        if (value.trim().length <= 0) return 'Price is required';
+      },
       maxLines: 1,
-      onChanged: (String value) {
+      onSaved: (String value) {
         setState(() {
           price = double.parse(value);
         });
@@ -78,7 +91,9 @@ class _CreateAdState extends State<CreateAd> {
     );
   }
 
-  void addProduct() {
+  void _onSubmit() {
+    if (!globalKey.currentState.validate()) return;
+    globalKey.currentState.save();
     widget._add({
       'title': title,
       'description': description,
@@ -91,37 +106,42 @@ class _CreateAdState extends State<CreateAd> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: ListView(
-      children: <Widget>[
-        Container(
-          child: buildTitleTextField(),
-          margin: EdgeInsets.all(20),
-        ),
-        Container(
-          child: buildDescriptionTextField(),
-          margin: EdgeInsets.all(20),
-        ),
-        Container(
-          child: buildLocationTextField(),
-          margin: EdgeInsets.all(20),
-        ),
-        Container(
-          child: buildPriceTextField(),
-          margin: EdgeInsets.all(20),
-        ),
-        Container(
-          margin: EdgeInsets.all(20),
-          child: IconButton(
-              color: Colors.red,
-              onPressed: () => addProduct(),
-              icon: Icon(
-                Icons.add_circle,
-                color: Colors.red,
-                size: 45,
-              )),
-        ),
-      ],
-    ));
+    return GestureDetector(
+        child: Center(
+            child: Form(
+                key: globalKey,
+                child: ListView(
+                  children: <Widget>[
+                    Container(
+                      child: buildTitleTextFormField(),
+                      margin: EdgeInsets.all(20),
+                    ),
+                    Container(
+                      child: buildDescriptionTextFormField(),
+                      margin: EdgeInsets.all(20),
+                    ),
+                    Container(
+                      child: buildLocationTextFormField(),
+                      margin: EdgeInsets.all(20),
+                    ),
+                    Container(
+                      child: buildPriceTextFormField(),
+                      margin: EdgeInsets.all(20),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(20),
+                      child: IconButton(
+                          color: Colors.red,
+                          onPressed: _onSubmit,
+                          icon: Icon(
+                            Icons.add_circle,
+                            color: Colors.red,
+                            size: 45,
+                          )),
+                    ),
+                  ],
+                ))),onTap: (){
+                  FocusScope.of(context).requestFocus(FocusNode()) ;
+                },);
   }
 }
