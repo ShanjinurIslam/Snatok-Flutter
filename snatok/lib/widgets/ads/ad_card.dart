@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/widgets/ads/price_tag.dart';
 
-class Ads extends StatelessWidget {
-  final List<Map<String, dynamic>> products;
-  Ads(this.products);
+class AdCard extends StatelessWidget{
+  final Map<String,dynamic> product ;
+  final int index ;
 
-  Widget _listBuilderFunction(BuildContext context, int index) {
+  AdCard(this.product,this.index) ;
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: <Widget>[
           SizedBox(
             height: 10,
           ),
-          Image.asset(products[index]['image'],
+          Image.asset(product['image'],
               fit: BoxFit.cover, alignment: Alignment.center),
           SizedBox(
             height: 10,
@@ -23,7 +27,7 @@ class Ads extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  products[index]['title'],
+                  product['title'],
                   style: TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.bold,
@@ -32,16 +36,7 @@ class Ads extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.5),
-                  child: Text(
-                    "\৳" + products[index]['price'].toString(),
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Theme.of(context).accentColor,
-                  ),
-                )
+                PriceTag(product['price'].toString())
               ],
             ),
           ),
@@ -96,46 +91,4 @@ class Ads extends StatelessWidget {
     );
   }
 
-  Widget lists() {
-    return ListView.builder(
-      itemBuilder: _listBuilderFunction,
-      itemCount: products.length,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    /*return ListView(
-              children: products
-                  .map((elements) => Card(
-                        margin: EdgeInsets.all(10),
-                        child: Column(
-                          children: <Widget>[
-                            Image.asset('assets/1.jpg'),
-                            Container(
-                              margin: EdgeInsets.all(10),
-                              child: Text(elements),
-                            ),
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              child: RaisedButton(
-                                child: Text(
-                                  'Details',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                onPressed: () {},
-                              ),
-                            )
-                          ],
-                        ),
-                      ))
-                  .toList(),
-            );*/
-
-    Widget errormessage() {
-      return Center(child: Text('No Contents Found'));
-    }
-
-    return products.length > 0 ? lists() : errormessage();
-  }
 }

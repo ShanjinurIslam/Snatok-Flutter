@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'ads_manager.dart';
+import 'package:snatok/widgets/ads/ads.dart';
 
 class HomePage extends StatefulWidget {
   final List<Map<String, dynamic>> products;
@@ -49,7 +49,7 @@ class _HomeState extends State<HomePage> {
           )
         ],
       ),
-      body: Center(child: AdsManager(widget.products)),
+      body: Center(child: Column(children: <Widget>[Expanded(child:Ads(widget.products))])),
     );
   }
 }
