@@ -12,6 +12,83 @@ class _AuthPageState extends State<AuthPageView> {
   String password;
   bool acceptTerms = false;
 
+  DecorationImage _buildBackGroundImage() {
+    return DecorationImage(
+        colorFilter:
+            ColorFilter.mode(Colors.white.withOpacity(0.5), BlendMode.dstATop),
+        fit: BoxFit.cover,
+        image: AssetImage('assets/2.jpg'));
+  }
+
+  Widget _buildUsernameWidget() {
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: FractionallySizedBox(
+        child: TextField(
+          style: TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+              enabledBorder:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+              labelText: 'Username',
+              filled: true,
+              fillColor: Colors.white,
+              labelStyle: TextStyle(color: Colors.grey)),
+          onChanged: (String value) {
+            setState(() {
+              username = value ;
+            });
+          },
+        ),
+        widthFactor: 0.85,
+      ),
+    );
+  }
+
+  Widget _buildPasswordWidget() {
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: FractionallySizedBox(
+        child: TextField(
+          style: TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+              enabledBorder:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+              labelText: 'Password',
+              filled: true,
+              fillColor: Colors.white,
+              labelStyle: TextStyle(color: Colors.grey)),
+          onChanged: (String value) {
+            setState(() {
+              password = value ;
+            });
+          },
+        ),
+        widthFactor: 0.85,
+      ),
+    );
+  }
+
+  Widget _buildSwitch() {
+    return Container(
+      margin: EdgeInsets.fromLTRB(25, 0, 25, 0),
+      child: SwitchListTile(
+        value: acceptTerms,
+        onChanged: (bool value) {
+          setState(() {
+            acceptTerms = value;
+          });
+        },
+        title: Text('Remember me?'),
+      ),
+    );
+  }
+
+  void _logIn(){
+    print(username) ;
+    print(password) ;
+    Navigator.pushReplacementNamed(context, '/home');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,9 +96,7 @@ class _AuthPageState extends State<AuthPageView> {
           title: Text('Login'),
         ),
         body: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.5), BlendMode.dstATop),
-                    fit: BoxFit.cover, image: AssetImage('assets/2.jpg'))),
+            decoration: BoxDecoration(image: _buildBackGroundImage()),
             child: Center(
               child: SingleChildScrollView(
                   child: Column(
@@ -38,52 +113,9 @@ class _AuthPageState extends State<AuthPageView> {
                       ),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: FractionallySizedBox(
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12)),
-                            labelText: 'Username',
-                            filled: true,
-                            fillColor: Colors.white,
-                            labelStyle: TextStyle(color: Colors.grey)),
-                        onChanged: (String value) {},
-                      ),
-                      widthFactor: 0.85,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.all(10),
-                    child: FractionallySizedBox(
-                      child: TextField(
-                        style: TextStyle(color: Colors.black),
-                        decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12)),
-                            labelText: 'Password',
-                            filled: true,
-                            fillColor: Colors.white,
-                            labelStyle: TextStyle(color: Colors.grey)),
-                        onChanged: (String value) {},
-                      ),
-                      widthFactor: 0.85,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(25, 0, 25, 0),
-                    child: SwitchListTile(
-                      value: acceptTerms,
-                      onChanged: (bool value) {
-                        setState(() {
-                          acceptTerms = value;
-                        });
-                      },
-                      title: Text('Remember me?'),
-                    ),
-                  ),
+                  _buildUsernameWidget(),
+                  _buildPasswordWidget(),
+                  _buildSwitch(),
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
@@ -94,9 +126,7 @@ class _AuthPageState extends State<AuthPageView> {
                         'Log In',
                         style: TextStyle(color: Colors.white),
                       ),
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/home');
-                      },
+                      onPressed: _logIn,
                       color: Colors.green,
                     ),
                   ),

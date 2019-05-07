@@ -9,6 +9,14 @@ class AdCard extends StatelessWidget {
 
   AdCard(this.product, this.index);
 
+  void _details(BuildContext context){
+    Navigator.pushNamed(context, '/ad/' + index.toString());
+  }
+
+  void _onFavPress(BuildContext context){
+    //
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -44,9 +52,7 @@ class AdCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/ad/' + index.toString());
-                  },
+                  onPressed: ()=> _details(context),
                   icon: Icon(
                     Icons.info,
                     color: Colors.blue,
@@ -57,9 +63,7 @@ class AdCard extends StatelessWidget {
                   width: 10,
                 ),
                 IconButton(
-                  onPressed: () {
-                    //Navigator.pushNamed(context, '/ad/' + index.toString());
-                  },
+                  onPressed: () =>_onFavPress(context),
                   icon: Icon(
                     Icons.favorite,
                     color: Colors.pink,
