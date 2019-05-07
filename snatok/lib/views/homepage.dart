@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:snatok/widgets/ads/ads.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _HomeState extends State<HomePage> {
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(Icons.help),
+            icon: Icon(CupertinoIcons.mic),
             onPressed: () {},
           )
         ],

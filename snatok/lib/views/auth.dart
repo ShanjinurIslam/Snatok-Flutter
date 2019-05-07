@@ -29,13 +29,13 @@ class _AuthPageState extends State<AuthPageView> {
           decoration: InputDecoration(
               enabledBorder:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-              labelText: 'Username',
+              hintText: 'Username',
               filled: true,
               fillColor: Colors.white,
-              labelStyle: TextStyle(color: Colors.grey)),
+              hintStyle: TextStyle(color: Colors.grey)),
           onChanged: (String value) {
             setState(() {
-              username = value ;
+              username = value;
             });
           },
         ),
@@ -53,13 +53,13 @@ class _AuthPageState extends State<AuthPageView> {
           decoration: InputDecoration(
               enabledBorder:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-              labelText: 'Password',
+              hintText: 'Password',
               filled: true,
               fillColor: Colors.white,
-              labelStyle: TextStyle(color: Colors.grey)),
+              hintStyle: TextStyle(color: Colors.grey)),
           onChanged: (String value) {
             setState(() {
-              password = value ;
+              password = value;
             });
           },
         ),
@@ -83,23 +83,22 @@ class _AuthPageState extends State<AuthPageView> {
     );
   }
 
-  void _logIn(){
-    print(username) ;
-    print(password) ;
+  void _logIn() {
+    print(username);
+    print(password);
     Navigator.pushReplacementNamed(context, '/home');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Login'),
-        ),
         body: Container(
             decoration: BoxDecoration(image: _buildBackGroundImage()),
             child: Center(
               child: SingleChildScrollView(
-                  child: Column(
+                  child: Container(
+                    width: MediaQuery.of(context).size.width*0.8,
+                      child: Column(
                 children: <Widget>[
                   SizedBox(
                     height: 10,
@@ -131,7 +130,7 @@ class _AuthPageState extends State<AuthPageView> {
                     ),
                   ),
                 ],
-              )),
+              ))),
             )));
   }
 }

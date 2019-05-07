@@ -43,6 +43,15 @@ class _AdManagementState extends State<AdManagement> {
           drawer: _buildDrawer(context),
           appBar: AppBar(
             title: Text('Manage Ads'),
+            bottom: TabBar(
+              tabs: <Widget>[
+                Tab(
+                  text: 'Create Product',
+                  icon: Icon(Icons.create),
+                ),
+                Tab(text: 'My Ads', icon: Icon(Icons.list))
+              ],
+            ),
           ),
           body: Center(
               child: TabBarView(
@@ -51,15 +60,6 @@ class _AdManagementState extends State<AdManagement> {
               ManageAd(widget._deleteAd)
             ],
           )),
-          bottomNavigationBar: TabBar(
-            tabs: <Widget>[
-              Tab(
-                text: 'Create Product',
-                icon: Icon(Icons.create),
-              ),
-              Tab(text: 'My Ads', icon: Icon(Icons.list))
-            ],
-          ),
         ));
   }
 }
