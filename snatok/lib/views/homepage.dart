@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'ads_manager.dart';
 
 class HomePage extends StatefulWidget {
-  final List<Map<String,dynamic>> products ;
+  final List<Map<String, dynamic>> products;
 
-  HomePage(this.products) ;
+  HomePage(this.products);
 
   @override
   State<StatefulWidget> createState() {
@@ -13,7 +13,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomeState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
@@ -35,7 +34,7 @@ class _HomeState extends State<HomePage> {
                 'Manage Products',
               ),
               onTap: () {
-                 Navigator.pushReplacementNamed(context, '/manageads') ;
+                Navigator.pushReplacementNamed(context, '/manageads');
               },
             )
           ],
@@ -43,6 +42,12 @@ class _HomeState extends State<HomePage> {
       ),
       appBar: AppBar(
         title: Text('Home'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.favorite),
+            onPressed: () {},
+          )
+        ],
       ),
       body: Center(child: AdsManager(widget.products)),
     );

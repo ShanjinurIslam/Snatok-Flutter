@@ -85,23 +85,21 @@ class _CreateAdState extends State<CreateAd> {
         ),
         Container(
           margin: EdgeInsets.all(20),
-          child: RaisedButton(
-            child: Text('Add Product'),
-            color: Colors.red,
-            textColor: Colors.white,
-            onPressed: () {
-              print(description);
-              print(title);
-              widget._add({
-                'title': title,
-                'image': 'assets/1.jpg',
-                'location': location,
-                'price': price
-              });
-              Navigator.pushReplacementNamed(context, '/home');
-            },
-          ),
-        )
+          child: IconButton(
+              color: Colors.red,
+              onPressed: () {
+                print(description);
+                print(title);
+                widget._add({
+                  'title': title,
+                  'image': 'assets/1.jpg',
+                  'location': location,
+                  'price': price
+                });
+                Navigator.pushReplacementNamed(context, '/home');
+              },
+              icon: Icon(Icons.add_circle,color: Colors.red,size: 45,)),
+        ),
       ],
     ));
   }

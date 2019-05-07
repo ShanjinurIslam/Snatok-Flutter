@@ -58,18 +58,34 @@ class Ads extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(30, 20, 30, 10),
-            decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.white)),
-            child: FlatButton(
-              child: Text(
-                'Details',
-                style: TextStyle(color: Colors.white),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/ad/' + index.toString());
-              },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/ad/' + index.toString());
+                  },
+                  icon: Icon(
+                    Icons.info,
+                    color: Colors.blue,
+                    size: 30,
+                  ),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                IconButton(
+                  onPressed: () {
+                    //Navigator.pushNamed(context, '/ad/' + index.toString());
+                  },
+                  icon: Icon(
+                    Icons.favorite,
+                    color: Colors.pink,
+                    size: 30,
+                  ),
+                )
+              ],
             ),
           ),
           SizedBox(
