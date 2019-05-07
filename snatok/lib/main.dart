@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
         
         if(elements[1]=='ad'){
           final int index = int.parse(elements[2]) ;
-          return MaterialPageRoute<bool>(builder: (BuildContext context) => SingleAd(products[index]['image'],products[index]['title']));
+          return MaterialPageRoute<bool>(builder: (BuildContext context) => SingleAd(products[index]));
         }
 
         return null ;

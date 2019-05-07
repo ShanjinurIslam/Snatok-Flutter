@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 class SingleAd extends StatelessWidget {
-  final String imageURL, value;
+  final Map<String, dynamic> map;
 
-  SingleAd(this.imageURL, this.value);
+  SingleAd(this.map);
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +14,16 @@ class SingleAd extends StatelessWidget {
           title: Text('Ad Details'),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.asset(imageURL),
-            Center(
-                child: Container(
-              child: Text(value),
-              margin: EdgeInsets.all(20),
-            )),
+            Image.asset(map['image']),
+            Center(child: Container(child: Column(
+              children: <Widget>[
+                Text(map['title']),
+                Text(map['description']),
+                Text(map['location']),
+                Text(map['price'].toString()),
+              ],
+            ))),
             /*Center(
               child: FlatButton(
                 child: Text(

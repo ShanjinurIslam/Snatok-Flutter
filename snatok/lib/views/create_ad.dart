@@ -12,9 +12,9 @@ class CreateAd extends StatefulWidget {
 }
 
 class _CreateAdState extends State<CreateAd> {
-  String title = "";
-  String description = "";
-  String location = "";
+  String title = "default";
+  String description = "default";
+  String location = "default";
   double price = 0;
 
   @override
@@ -92,6 +92,7 @@ class _CreateAdState extends State<CreateAd> {
                 print(title);
                 widget._add({
                   'title': title,
+                  'description':description,
                   'image': 'assets/1.jpg',
                   'location': location,
                   'price': price
