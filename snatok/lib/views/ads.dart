@@ -51,7 +51,7 @@ class Ads extends StatelessWidget {
             child: Text('Dhaka,Bangladesh',style: TextStyle(fontWeight: FontWeight.bold),),
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            margin: EdgeInsets.fromLTRB(30,20,30,10),
             decoration: BoxDecoration(
                 color: Colors.green, borderRadius: BorderRadius.circular(12)),
             child: FlatButton(
