@@ -53,7 +53,7 @@ class _ManageAdState extends State<ManageAd> {
                                     FlatButton(
                                       onPressed: () {
                                         model.deleteAd(index);
-                                        Navigator.pop(context,false) ;
+                                        Navigator.popAndPushNamed(context,'/manageads') ;
                                       },
                                       child: Text('Yes'),
                                     ),
