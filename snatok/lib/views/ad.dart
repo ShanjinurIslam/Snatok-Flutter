@@ -3,9 +3,10 @@ import 'package:snatok/widgets/ads/ad_address.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
 import 'dart:async'; //for returning future values
 import 'package:snatok/widgets/ui_elements/ad_title.dart';
+import 'package:snatok/models/ad.dart';
 
 class SingleAd extends StatelessWidget {
-  final Map<String, dynamic> map;
+  final Ad map;
 
   SingleAd(this.map);
 
@@ -26,7 +27,7 @@ class SingleAd extends StatelessWidget {
   }
 
   Widget _buildAddress() {
-    return AdAddress(map['location']);
+    return AdAddress(map.location);
   }
 
   Widget _buildDescription() {
@@ -35,7 +36,7 @@ class SingleAd extends StatelessWidget {
         Container(
           margin: EdgeInsets.all(20),
           child: Card(
-            child: Text(map['description']),
+            child: Text(map.description),
           ),
         )
       ],
@@ -51,12 +52,12 @@ class SingleAd extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            Image.asset(map['image']),
+            Image.asset(map.image),
             Center(
                 child: Container(
                     child: Column(
               children: <Widget>[
-                _buildTitlePrice(map['title'], map['price'].toString()),
+                _buildTitlePrice(map.title, map.price.toString()),
                 _buildDescription(),
                 _buildAddress(),
               ],

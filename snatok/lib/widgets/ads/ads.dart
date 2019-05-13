@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/models/ad.dart';
 import 'package:snatok/widgets/ads/ad_card.dart';
 
 
 class Ads extends StatelessWidget {
-  final List<Map<String, dynamic>> products;
+  final List<Ad> products;
   Ads(this.products);
 
   Widget lists() {

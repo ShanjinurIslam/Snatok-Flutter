@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/models/ad.dart';
 import 'create_ad.dart';
 import 'manage_ad.dart';
 
 class AdManagement extends StatefulWidget {
   final Function _add;
   final Function _deleteAd;
-  final List<Map<String,dynamic>> products ;
+  final List<Ad> products ;
 
   AdManagement(this._add, this._deleteAd,this.products);
 

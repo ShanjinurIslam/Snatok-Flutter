@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/models/ad.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
 import 'package:snatok/widgets/ui_elements/ad_title.dart';
 import 'package:snatok/widgets/ads/ad_address.dart';
 
 class AdCard extends StatelessWidget {
-  final Map<String, dynamic> product;
+  final Ad product;
   final int index;
 
   AdCard(this.product, this.index);
@@ -25,7 +26,7 @@ class AdCard extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          Image.asset(product['image'],
+          Image.asset(product.image,
               fit: BoxFit.cover, alignment: Alignment.center),
           SizedBox(
             height: 10,
@@ -36,15 +37,15 @@ class AdCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                AdTitle(product['title']),
+                AdTitle(product.title),
                 SizedBox(
                   width: 10,
                 ),
-                PriceTag(product['price'].toString())
+                PriceTag(product.price.toString())
               ],
             ),
           ),
-          AdAddress(product['location']),
+          AdAddress(product.location),
           Container(
             margin: EdgeInsets.fromLTRB(30, 20, 30, 10),
             child: Row(

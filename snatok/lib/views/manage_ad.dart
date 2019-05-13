@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/models/ad.dart';
 
 class ManageAd extends StatefulWidget {
   final Function _deleteAd;
-  final List<Map<String, dynamic>> products;
+  final List<Ad> products;
 
   ManageAd(this.products, this._deleteAd);
 
@@ -26,10 +27,10 @@ class _ManageAdState extends State<ManageAd> {
           children: <Widget>[
             ListTile(
               leading: CircleAvatar(
-                backgroundImage: AssetImage(widget.products[index]['image']),
+                backgroundImage: AssetImage(widget.products[index].image),
               ),
-              title: Text(widget.products[index]['title']),
-              subtitle: Text('\৳' + widget.products[index]['price'].toString()),
+              title: Text(widget.products[index].title),
+              subtitle: Text('\৳' + widget.products[index].price.toString()),
               trailing: ButtonBar(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[

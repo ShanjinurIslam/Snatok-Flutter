@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/models/ad.dart';
 
 class CreateAd extends StatefulWidget {
   final Function _add;
@@ -86,13 +87,8 @@ class _CreateAdState extends State<CreateAd> {
   void _onSubmit() {
     if (!globalKey.currentState.validate()) return;
     globalKey.currentState.save();
-    widget._add({
-      'title': title,
-      'description': description,
-      'image': 'assets/1.jpg',
-      'location': location,
-      'price': price
-    });
+    widget._add(Ad(title: title,description: description,location: location,price: price,image: 'assets/1.jpg'));
+    
     Navigator.pushReplacementNamed(context, '/home');
   }
 

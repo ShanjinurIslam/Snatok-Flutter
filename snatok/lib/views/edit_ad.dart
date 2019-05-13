@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/models/ad.dart';
 
 class EditAd extends StatefulWidget {
   final Function _replace;
   final int index;
-  final Map<String, dynamic> product;
+  final Ad product;
 
   EditAd(this.product, this._replace, this.index);
 
@@ -23,10 +24,10 @@ class _EditAdState extends State<EditAd> {
   @override
   void initState() {
     super.initState();
-    title = widget.product['title'];
-    description = widget.product['description'];
-    location = widget.product['location'];
-    price = widget.product['price'];
+    title = widget.product.title;
+    description = widget.product.description;
+    location = widget.product.location;
+    price = widget.product.price;
   }
 
   Widget buildTitleTextFormField() {
@@ -96,13 +97,7 @@ class _EditAdState extends State<EditAd> {
   void _onSubmit() {
     if (!globalKey.currentState.validate()) return;
     globalKey.currentState.save();
-    widget._replace(widget.index, {
-      'title': title,
-      'description': description,
-      'image': 'assets/1.jpg',
-      'location': location,
-      'price': price
-    });
+    widget._replace(widget.index, Ad(title: title,description: description,location: location,price: price,image: 'assets/1.jpg'));
     Navigator.pushReplacementNamed(context, '/home');
   }
 

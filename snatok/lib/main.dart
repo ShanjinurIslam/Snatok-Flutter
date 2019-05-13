@@ -5,6 +5,7 @@ import 'views/edit_ad.dart';
 import 'views/homepage.dart';
 import 'views/ad_management.dart';
 import 'views/ad.dart';
+import 'models/ad.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,13 +17,13 @@ class MyApp extends StatefulWidget{
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Map<String,dynamic>> products = [] ;
+  List<Ad> products = [] ;
 
   void initState() {
     super.initState();
   }
 
-  void _add(Map<String,dynamic> product) {
+  void _add(Ad product) {
     setState(() {
       products.add(product);
     });
@@ -34,10 +35,9 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void _replaceAd(int index,Map<String,dynamic> product){
+  void _replaceAd(int index,Ad product){
     setState(() {
-      products.removeAt(index) ;
-      products.insert(index, product) ;
+      products[index] = product ;
     }); 
   }
   

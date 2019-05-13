@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:snatok/models/ad.dart';
 import 'package:snatok/widgets/ads/ads.dart';
 
 class HomePage extends StatefulWidget {
-  final List<Map<String, dynamic>> products;
+  final List<Ad> products;
 
   HomePage(this.products);
 
