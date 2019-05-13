@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:snatok/models/ad.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/models/ad.dart';
 
 class CreateAd extends StatefulWidget {
-  final Function _add;
-
-  CreateAd(this._add);
-
   @override
   State<StatefulWidget> createState() {
     return _CreateAdState();
@@ -34,7 +33,7 @@ class _CreateAdState extends State<CreateAd> {
       },
       maxLines: 1,
       onSaved: (String value) {
-          title = value;
+        title = value;
       },
     );
   }
@@ -49,7 +48,7 @@ class _CreateAdState extends State<CreateAd> {
       decoration: InputDecoration(labelText: 'Description'),
       maxLines: 2,
       onSaved: (String value) {
-          description = value;
+        description = value;
       },
     );
   }
@@ -64,7 +63,7 @@ class _CreateAdState extends State<CreateAd> {
       },
       maxLines: 1,
       onSaved: (String value) {
-          location = value;
+        location = value;
       },
     );
   }
@@ -79,57 +78,70 @@ class _CreateAdState extends State<CreateAd> {
       },
       maxLines: 1,
       onSaved: (String value) {
-          price = double.parse(value);
+        price = double.parse(value);
       },
     );
   }
 
-  void _onSubmit() {
+  void _onSubmit(Function addProduct) {
     if (!globalKey.currentState.validate()) return;
     globalKey.currentState.save();
-    widget._add(Ad(title: title,description: description,location: location,price: price,image: 'assets/1.jpg'));
-    
-    Navigator.pushReplacementNamed(context, '/home');
+    addProduct(Ad(
+        title: title,
+        description: description,
+        location: location,
+        price: price,
+        image: 'assets/1.jpg'));
+      Navigator.pushReplacementNamed(context, '/home');
+  }
+
+  Widget _buildSubmitButton() {
+
+    return ScopedModelDescendant(
+      builder: (BuildContext context, Widget child, AdModel model) {
+        return IconButton(
+            color: Colors.red,
+            onPressed: () => _onSubmit(model.addAd),
+            icon: Icon(
+              Icons.add_circle,
+              color: Colors.red,
+              size: 45,
+            ));
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: Center(
-            child: Form(
-                key: globalKey,
-                child: ListView(
-                  children: <Widget>[
-                    Container(
-                      child: buildTitleTextFormField(),
-                      margin: EdgeInsets.all(20),
-                    ),
-                    Container(
-                      child: buildDescriptionTextFormField(),
-                      margin: EdgeInsets.all(20),
-                    ),
-                    Container(
-                      child: buildLocationTextFormField(),
-                      margin: EdgeInsets.all(20),
-                    ),
-                    Container(
-                      child: buildPriceTextFormField(),
-                      margin: EdgeInsets.all(20),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(20),
-                      child: IconButton(
-                          color: Colors.red,
-                          onPressed: _onSubmit,
-                          icon: Icon(
-                            Icons.add_circle,
-                            color: Colors.red,
-                            size: 45,
-                          )),
-                    ),
-                  ],
-                ))),onTap: (){
-                  FocusScope.of(context).requestFocus(FocusNode()) ;
-                },);
+      child: Center(
+          child: Form(
+              key: globalKey,
+              child: ListView(
+                children: <Widget>[
+                  Container(
+                    child: buildTitleTextFormField(),
+                    margin: EdgeInsets.all(20),
+                  ),
+                  Container(
+                    child: buildDescriptionTextFormField(),
+                    margin: EdgeInsets.all(20),
+                  ),
+                  Container(
+                    child: buildLocationTextFormField(),
+                    margin: EdgeInsets.all(20),
+                  ),
+                  Container(
+                    child: buildPriceTextFormField(),
+                    margin: EdgeInsets.all(20),
+                  ),
+                  Container(
+                      margin: EdgeInsets.all(20), child: _buildSubmitButton()),
+                ],
+              ))),
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+    );
   }
 }

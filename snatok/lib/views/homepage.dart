@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:snatok/models/ad.dart';
 import 'package:snatok/widgets/ads/ads.dart';
 
 class HomePage extends StatefulWidget {
-  final List<Ad> products;
-
-  HomePage(this.products);
-
   @override
   State<StatefulWidget> createState() {
     return _HomeState();
@@ -51,9 +46,7 @@ class _HomeState extends State<HomePage> {
           ),
         ],
       ),
-      body: Center(
-          child: Column(
-              children: <Widget>[Expanded(child: Ads(widget.products))])),
+      body: Center(child: Column(children: <Widget>[Expanded(child: Ads())])),
     );
   }
 }
