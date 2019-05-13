@@ -1,39 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
+import 'package:snatok/scoped-models/ads.dart';
 
 class EditAd extends StatefulWidget {
-  final Function _replace;
   final int index;
-  final Ad product;
-
-  EditAd(this.product, this._replace, this.index);
+  EditAd(this.index);
 
   @override
   State<StatefulWidget> createState() {
-    return _EditAdState();
+    return _EditAdState(index);
   }
 }
 
 class _EditAdState extends State<EditAd> {
+  final int index;
   String title = "";
   String description = "";
   String location = "";
   double price = 0;
   final GlobalKey<FormState> globalKey = GlobalKey<FormState>();
 
+  _EditAdState(this.index);
+
   @override
   void initState() {
     super.initState();
-    title = widget.product.title;
-    description = widget.product.description;
-    location = widget.product.location;
-    price = widget.product.price;
   }
 
-  Widget buildTitleTextFormField() {
+  Widget buildTitleTextFormField(AdModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: title,
+      initialValue: model.products[index].title,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(labelText: 'Title'),
       validator: (String value) {
@@ -46,10 +44,10 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  Widget buildDescriptionTextFormField() {
+  Widget buildDescriptionTextFormField(AdModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: description,
+      initialValue: model.products[index].description,
       keyboardType: TextInputType.text,
       validator: (String value) {
         if (value.trim().length <= 0) return 'Description is required';
@@ -62,10 +60,10 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  Widget buildLocationTextFormField() {
+  Widget buildLocationTextFormField(AdModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: location,
+      initialValue: model.products[index].location,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(labelText: 'Location'),
       validator: (String value) {
@@ -78,10 +76,10 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  Widget buildPriceTextFormField() {
+  Widget buildPriceTextFormField(AdModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: price.toString(),
+      initialValue: model.products[index].price.toString(),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: 'Price'),
       validator: (String value) {
@@ -94,11 +92,58 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  void _onSubmit() {
+  void _onSubmit(AdModel model) {
     if (!globalKey.currentState.validate()) return;
     globalKey.currentState.save();
-    widget._replace(widget.index, Ad(title: title,description: description,location: location,price: price,image: 'assets/1.jpg'));
+    model.replaceAd(
+        index,
+        Ad(
+            title: title,
+            description: description,
+            location: location,
+            price: price,
+            image: 'assets/1.jpg'));
     Navigator.pushReplacementNamed(context, '/home');
+  }
+
+  Widget getForm() {
+    return ScopedModelDescendant<AdModel>(
+      builder: (BuildContext context, Widget child, AdModel model) {
+        return Form(
+            key: globalKey,
+            child: ListView(
+              children: <Widget>[
+                Container(
+                  child: buildTitleTextFormField(model),
+                  margin: EdgeInsets.all(20),
+                ),
+                Container(
+                  child: buildDescriptionTextFormField(model),
+                  margin: EdgeInsets.all(20),
+                ),
+                Container(
+                  child: buildLocationTextFormField(model),
+                  margin: EdgeInsets.all(20),
+                ),
+                Container(
+                  child: buildPriceTextFormField(model),
+                  margin: EdgeInsets.all(20),
+                ),
+                Container(
+                  margin: EdgeInsets.all(20),
+                  child: IconButton(
+                      color: Colors.red,
+                      onPressed: () => _onSubmit(model),
+                      icon: Icon(
+                        Icons.add_circle,
+                        color: Colors.red,
+                        size: 45,
+                      )),
+                ),
+              ],
+            ));
+      },
+    );
   }
 
   @override
@@ -109,39 +154,8 @@ class _EditAdState extends State<EditAd> {
             title: Text('Edit Ad'),
           ),
           body: Center(
-              child: Form(
-                  key: globalKey,
-                  child: ListView(
-                    children: <Widget>[
-                      Container(
-                        child: buildTitleTextFormField(),
-                        margin: EdgeInsets.all(20),
-                      ),
-                      Container(
-                        child: buildDescriptionTextFormField(),
-                        margin: EdgeInsets.all(20),
-                      ),
-                      Container(
-                        child: buildLocationTextFormField(),
-                        margin: EdgeInsets.all(20),
-                      ),
-                      Container(
-                        child: buildPriceTextFormField(),
-                        margin: EdgeInsets.all(20),
-                      ),
-                      Container(
-                        margin: EdgeInsets.all(20),
-                        child: IconButton(
-                            color: Colors.red,
-                            onPressed: _onSubmit,
-                            icon: Icon(
-                              Icons.add_circle,
-                              color: Colors.red,
-                              size: 45,
-                            )),
-                      ),
-                    ],
-                  )))),
+            child: getForm(),
+          )),
       onTap: () {
         FocusScope.of(context).requestFocus(FocusNode());
       },

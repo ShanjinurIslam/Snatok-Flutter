@@ -54,7 +54,7 @@ class _AdManagementState extends State<AdManagement> {
               child: TabBarView(
             children: <Widget>[
               CreateAd(),
-              ManageAd(null,null)
+              ManageAd(),
             ],
           )),
         ));

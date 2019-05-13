@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/widgets/ads/ad_address.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
 import 'dart:async'; //for returning future values
 import 'package:snatok/widgets/ui_elements/ad_title.dart';
-import 'package:snatok/models/ad.dart';
 
 class SingleAd extends StatelessWidget {
-  final Ad map;
+  final int index;
 
-  SingleAd(this.map);
+  SingleAd(this.index);
 
   Widget _buildTitlePrice(String title, String value) {
     return Container(
@@ -26,17 +27,17 @@ class SingleAd extends StatelessWidget {
         ));
   }
 
-  Widget _buildAddress() {
-    return AdAddress(map.location);
+  Widget _buildAddress(String location) {
+    return AdAddress(location);
   }
 
-  Widget _buildDescription() {
+  Widget _buildDescription(String description) {
     return Column(
       children: <Widget>[
         Container(
           margin: EdgeInsets.all(20),
           child: Card(
-            child: Text(map.description),
+            child: Text(description),
           ),
         )
       ],
@@ -45,29 +46,36 @@ class SingleAd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Ad Details'),
-        ),
-        body: Column(
-          children: <Widget>[
-            Image.asset(map.image),
-            Center(
-                child: Container(
-                    child: Column(
+    /**/
+
+    return ScopedModelDescendant<AdModel>(
+      builder: (BuildContext context, Widget child, AdModel model) {
+        return WillPopScope(
+          child: Scaffold(
+            appBar: AppBar(
+              title: Text('Ad Details'),
+            ),
+            body: Column(
               children: <Widget>[
-                _buildTitlePrice(map.title, map.price.toString()),
-                _buildDescription(),
-                _buildAddress(),
+                Image.asset(model.products[index].image),
+                Center(
+                    child: Container(
+                        child: Column(
+                  children: <Widget>[
+                    _buildTitlePrice(model.products[index].title,
+                        model.products[index].price.toString()),
+                    _buildDescription(model.products[index].description),
+                    _buildAddress(model.products[index].location),
+                  ],
+                ))),
               ],
-            ))),
-          ],
-        ),
-      ),
-      onWillPop: () {
-        Navigator.pop(context, false);
-        return Future.value(false);
+            ),
+          ),
+          onWillPop: () {
+            Navigator.pop(context, false);
+            return Future.value(false);
+          },
+        );
       },
     );
   }

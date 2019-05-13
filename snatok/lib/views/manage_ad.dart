@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:snatok/models/ad.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:snatok/scoped-models/ads.dart';
 
 class ManageAd extends StatefulWidget {
-  final Function _deleteAd;
-  final List<Ad> products;
-
-  ManageAd(this.products, this._deleteAd);
-
   @override
   State<StatefulWidget> createState() {
     return _ManageAdState();
@@ -21,62 +17,68 @@ class _ManageAdState extends State<ManageAd> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        return Column(
-          children: <Widget>[
-            ListTile(
-              leading: CircleAvatar(
-                backgroundImage: AssetImage(widget.products[index].image),
-              ),
-              title: Text(widget.products[index].title),
-              subtitle: Text('\৳' + widget.products[index].price.toString()),
-              trailing: ButtonBar(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () {
-                      Navigator.of(context)
-                          .pushNamed('/edit_ad/' + index.toString());
-                    },
+    return ScopedModelDescendant<AdModel>(
+      builder: (BuildContext context, Widget child, AdModel model) {
+        return ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return Column(
+              children: <Widget>[
+                ListTile(
+                  leading: CircleAvatar(
+                    backgroundImage: AssetImage(model.products[index].image),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      showDialog(
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text('Are you sure to remove?'),
-                              content: Text('Once deleted can not be undone'),
-                              actions: <Widget>[
-                                FlatButton(
-                                  onPressed: () {
-                                    widget._deleteAd(index);
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text('Yes'),
-                                ),
-                                FlatButton(
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Text('No'),
-                                ),
-                              ],
-                            );
-                          },
-                          context: context);
-                    },
-                  )
-                ],
-              ),
-            ),
-            Divider(),
-          ],
+                  title: Text(model.products[index].title),
+                  subtitle:
+                      Text('\৳' + model.products[index].price.toString()),
+                  trailing: ButtonBar(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.edit),
+                        onPressed: () {
+                          Navigator.of(context)
+                              .pushNamed('/edit_ad/' + index.toString());
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          showDialog(
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text('Are you sure to remove?'),
+                                  content:
+                                      Text('Once deleted can not be undone'),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      onPressed: () {
+                                        model.deleteAd(index);
+                                        Navigator.pop(context,false) ;
+                                      },
+                                      child: Text('Yes'),
+                                    ),
+                                    FlatButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text('No'),
+                                    ),
+                                  ],
+                                );
+                              },
+                              context: context);
+                        },
+                      )
+                    ],
+                  ),
+                ),
+                Divider(),
+              ],
+            );
+          },
+          itemCount: model.products.length,
         );
       },
-      itemCount: widget.products.length,
     );
   }
 }

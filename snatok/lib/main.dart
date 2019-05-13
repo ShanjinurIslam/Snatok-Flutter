@@ -42,13 +42,13 @@ class _MyAppState extends State<MyApp> {
             if (elements[1] == 'ad') {
               final int index = int.parse(elements[2]);
               return MaterialPageRoute<bool>(
-                  builder: (BuildContext context) => SingleAd(null));
+                  builder: (BuildContext context) => SingleAd(index));
             }
 
             if (elements[1] == 'edit_ad') {
               final int index = int.parse(elements[2]);
               return MaterialPageRoute<bool>(
-                  builder: (BuildContext context) => EditAd(null, null, null));
+                  builder: (BuildContext context) => EditAd(index));
             }
 
             return null;
