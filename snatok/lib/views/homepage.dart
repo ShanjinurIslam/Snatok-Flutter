@@ -48,13 +48,11 @@ class _HomeState extends State<HomePage> {
             icon: Icon(Icons.favorite),
             onPressed: () {},
           ),
-          IconButton(
-            icon: Icon(CupertinoIcons.mic),
-            onPressed: () {},
-          )
         ],
       ),
-      body: Center(child: Column(children: <Widget>[Expanded(child:Ads(widget.products))])),
+      body: Center(
+          child: Column(
+              children: <Widget>[Expanded(child: Ads(widget.products))])),
     );
   }
 }
