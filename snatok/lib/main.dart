@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:snatok/views/edit_ad.dart';
 import 'views/auth.dart';
+import 'views/edit_ad.dart';
 import 'views/homepage.dart';
 import 'views/ad_management.dart';
 import 'views/ad.dart';
@@ -31,6 +33,13 @@ class _MyAppState extends State<MyApp> {
       products.removeAt(index) ;
     });
   }
+
+  void _replaceAd(int index,Map<String,dynamic> product){
+    setState(() {
+      products.removeAt(index) ;
+      products.insert(index, product) ;
+    }); 
+  }
   
   @override
   Widget build(BuildContext context) {
@@ -38,7 +47,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/' : (BuildContext context)=> AuthPageView(),
         '/home':         (BuildContext context) => new HomePage(products),
-        '/manageads':         (BuildContext context) => new AdManagement(_add,_deleteAd),
+        '/manageads':         (BuildContext context) => new AdManagement(_add,_deleteAd,products),
       },
       theme: ThemeData(primarySwatch: Colors.green,brightness: Brightness.dark,accentColor: Colors.redAccent),
       onGenerateRoute: (RouteSettings settings){
@@ -47,6 +56,11 @@ class _MyAppState extends State<MyApp> {
         if(elements[1]=='ad'){
           final int index = int.parse(elements[2]) ;
           return MaterialPageRoute<bool>(builder: (BuildContext context) => SingleAd(products[index]));
+        }
+
+        if(elements[1]=='edit_ad'){
+          final int index = int.parse(elements[2]) ;
+          return MaterialPageRoute<bool>(builder: (BuildContext context) => EditAd(products[index],_replaceAd,index));
         }
 
         return null ;

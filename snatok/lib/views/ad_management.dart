@@ -5,8 +5,9 @@ import 'manage_ad.dart';
 class AdManagement extends StatefulWidget {
   final Function _add;
   final Function _deleteAd;
+  final List<Map<String,dynamic>> products ;
 
-  AdManagement(this._add, this._deleteAd);
+  AdManagement(this._add, this._deleteAd,this.products);
 
   @override
   _AdManagementState createState() => _AdManagementState();
@@ -57,7 +58,7 @@ class _AdManagementState extends State<AdManagement> {
               child: TabBarView(
             children: <Widget>[
               CreateAd(widget._add),
-              ManageAd(widget._deleteAd)
+              ManageAd(widget.products,widget._deleteAd)
             ],
           )),
         ));
