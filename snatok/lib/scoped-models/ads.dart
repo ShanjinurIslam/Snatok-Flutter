@@ -5,18 +5,22 @@ class AdModel extends Model {
   final List<Ad> _products = [];
 
   List<Ad> get products {
-    return List.from(_products) ;
+    return List.from(_products);
   }
 
   void addAd(Ad product) {
-      _products.add(product);
+    _products.add(product);
   }
 
   void deleteAd(int index) {
-      _products.removeAt(index);
+    _products.removeAt(index);
   }
 
   void replaceAd(int index, Ad product) {
-      _products[index] = product;
+    _products[index] = product;
+  }
+
+  void toggleAdFavorite(int index) {
+    _products[index].isFavorite = !_products[index].isFavorite;
   }
 }

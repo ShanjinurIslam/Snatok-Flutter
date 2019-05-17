@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
+import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
 import 'package:snatok/widgets/ui_elements/ad_title.dart';
 import 'package:snatok/widgets/ads/ad_address.dart';
@@ -10,12 +12,27 @@ class AdCard extends StatelessWidget {
 
   AdCard(this.product, this.index);
 
-  void _details(BuildContext context){
+  void _details(BuildContext context) {
     Navigator.pushNamed(context, '/ad/' + index.toString());
   }
 
-  void _onFavPress(BuildContext context){
-    //
+  Widget favIcon(BuildContext context) {
+    return ScopedModelDescendant(
+      builder: (BuildContext context, Widget child, AdModel model) {
+        IconButton(
+          onPressed: () {
+            model.toggleAdFavorite(index);
+          },
+          icon: Icon(
+            model.products[index].isFavorite
+                ? Icons.favorite
+                : Icons.favorite_border,
+            color: Colors.pink,
+            size: 30,
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -53,7 +70,7 @@ class AdCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 IconButton(
-                  onPressed: ()=> _details(context),
+                  onPressed: () => _details(context),
                   icon: Icon(
                     Icons.info,
                     color: Colors.blue,
@@ -63,14 +80,7 @@ class AdCard extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                IconButton(
-                  onPressed: () =>_onFavPress(context),
-                  icon: Icon(
-                    Icons.favorite,
-                    color: Colors.pink,
-                    size: 30,
-                  ),
-                )
+                favIcon(context),
               ],
             ),
           ),

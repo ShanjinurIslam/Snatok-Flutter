@@ -6,9 +6,11 @@ class Ad {
   final String location;
   final double price;
   final String image;
+  bool isFavorite;
 
   Ad(
-      {@required this.title,
+      {this.isFavorite = false,
+      @required this.title,
       @required this.description,
       @required this.location,
       @required this.price,
