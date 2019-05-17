@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:snatok/scoped-models/user.dart';
 
 class AuthPageView extends StatefulWidget {
   @override
@@ -83,54 +85,64 @@ class _AuthPageState extends State<AuthPageView> {
     );
   }
 
-  void _logIn() {
-    Navigator.pushReplacementNamed(context, '/home');
+  Widget _logIn() {
+    return ScopedModelDescendant<UserModel>(builder: (BuildContext context, Widget child, UserModel model) {
+      return FlatButton(
+                            child: Text(
+                              'Log In',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            onPressed:(){ 
+                              model.login(username, password) ;
+                              Navigator.pushReplacementNamed(context, '/home'); 
+                            },
+                            color: Colors.green,
+                          ) ; 
+    },) ;
+
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: GestureDetector(child:Container(
-            decoration: BoxDecoration(image: _buildBackGroundImage()),
-            child: Center(
-              child: SingleChildScrollView(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width*0.8,
-                      child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Center(
-                    child: Container(
-                      margin: EdgeInsets.all(10),
-                      child: Text(
-                        'স্নাতক',
-                        style: TextStyle(fontSize: 40),
-                      ),
-                    ),
-                  ),
-                  _buildUsernameWidget(),
-                  _buildPasswordWidget(),
-                  _buildSwitch(),
-                  Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.green,
-                        border: Border.all(color: Colors.white)),
-                    child: FlatButton(
-                      child: Text(
-                        'Log In',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      onPressed: _logIn,
-                      color: Colors.green,
-                    ),
-                  ),
-                ],
-              ))),
-            )),onTap: (){
-              FocusScope.of(context).requestFocus(FocusNode()) ;
-            },));
+        body: GestureDetector(
+      child: Container(
+          decoration: BoxDecoration(image: _buildBackGroundImage()),
+          child: Center(
+            child: SingleChildScrollView(
+                child: Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Center(
+                          child: Container(
+                            margin: EdgeInsets.all(10),
+                            child: Text(
+                              'স্নাতক',
+                              style: TextStyle(fontSize: 40),
+                            ),
+                          ),
+                        ),
+                        _buildUsernameWidget(),
+                        _buildPasswordWidget(),
+                        _buildSwitch(),
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.green,
+                              border: Border.all(color: Colors.white)),
+                          child: ,
+                        ),
+                      ],
+                    ))),
+          )),
+      onTap: () {
+        FocusScope.of(context).requestFocus(FocusNode());
+      },
+    ));
   }
 }
