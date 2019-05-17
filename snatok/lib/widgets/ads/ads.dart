@@ -23,8 +23,9 @@ class Ads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<AdModel>(builder: (BuildContext context,Widget child,AdModel model){
-      return _buildProductList(model.products) ;
+    return ScopedModelDescendant<AdModel>(
+        builder: (BuildContext context, Widget child, AdModel model) {
+      return _buildProductList(model.displayProducts);
     });
   }
 }

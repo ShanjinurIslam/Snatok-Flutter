@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:scoped_model/scoped_model.dart';
+import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/widgets/ads/ads.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,6 +15,20 @@ class _HomeState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Widget toggleFav() {
+    return ScopedModelDescendant<AdModel>(
+      builder: (BuildContext context, Widget child, AdModel model) {
+        return IconButton(
+          icon:
+              Icon(model.displayMode ? Icons.favorite : Icons.favorite_border),
+          onPressed: () {
+            model.toggleDisplayMode();
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -40,10 +56,7 @@ class _HomeState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Home'),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.favorite),
-            onPressed: () {},
-          ),
+          toggleFav(),
         ],
       ),
       body: Center(child: Column(children: <Widget>[Expanded(child: Ads())])),
