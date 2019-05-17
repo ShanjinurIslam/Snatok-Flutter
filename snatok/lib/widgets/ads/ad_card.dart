@@ -17,9 +17,9 @@ class AdCard extends StatelessWidget {
   }
 
   Widget favIcon(BuildContext context) {
-    return ScopedModelDescendant(
+    return ScopedModelDescendant<AdModel>(
       builder: (BuildContext context, Widget child, AdModel model) {
-        IconButton(
+        return IconButton(
           onPressed: () {
             model.toggleAdFavorite(index);
           },
