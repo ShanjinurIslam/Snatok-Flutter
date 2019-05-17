@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/widgets/ads/ad_address.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
@@ -58,15 +57,15 @@ class SingleAd extends StatelessWidget {
             ),
             body: Column(
               children: <Widget>[
-                Image.asset(model.products[index].image),
+                Image.asset(model.AllProducts[index].image),
                 Center(
                     child: Container(
                         child: Column(
                   children: <Widget>[
-                    _buildTitlePrice(model.products[index].title,
-                        model.products[index].price.toString()),
-                    _buildDescription(model.products[index].description),
-                    _buildAddress(model.products[index].location),
+                    _buildTitlePrice(model.AllProducts[index].title,
+                        model.AllProducts[index].price.toString()),
+                    _buildDescription(model.AllProducts[index].description),
+                    _buildAddress(model.AllProducts[index].location),
                   ],
                 ))),
               ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
-import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
 import 'package:snatok/widgets/ui_elements/ad_title.dart';
@@ -25,7 +24,7 @@ class AdCard extends StatelessWidget {
             model.toggleAdFavorite(index);
           },
           icon: Icon(
-            model.products[index].isFavorite
+            model.AllProducts[index].isFavorite
                 ? Icons.favorite
                 : Icons.favorite_border,
             color: Colors.pink,

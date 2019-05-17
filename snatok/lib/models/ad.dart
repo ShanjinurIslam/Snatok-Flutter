@@ -7,6 +7,8 @@ class Ad {
   final double price;
   final String image;
   bool isFavorite;
+  String id;
+  String email;
 
   Ad(
       {this.isFavorite = false,
@@ -14,5 +16,7 @@ class Ad {
       @required this.description,
       @required this.location,
       @required this.price,
-      @required this.image});
+      @required this.image,
+      this.id,
+      this.email});
 }

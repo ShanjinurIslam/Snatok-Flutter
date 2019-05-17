@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/scoped-models/main.dart';
 
 class ManageAd extends StatefulWidget {
@@ -26,10 +25,11 @@ class _ManageAdState extends State<ManageAd> {
               children: <Widget>[
                 ListTile(
                   leading: CircleAvatar(
-                    backgroundImage: AssetImage(model.products[index].image),
+                    backgroundImage: AssetImage(model.AllProducts[index].image),
                   ),
-                  title: Text(model.products[index].title),
-                  subtitle: Text('\৳' + model.products[index].price.toString()),
+                  title: Text(model.AllProducts[index].title),
+                  subtitle:
+                      Text('\৳' + model.AllProducts[index].price.toString()),
                   trailing: ButtonBar(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -76,7 +76,7 @@ class _ManageAdState extends State<ManageAd> {
               ],
             );
           },
-          itemCount: model.products.length,
+          itemCount: model.AllProducts.length,
         );
       },
     );

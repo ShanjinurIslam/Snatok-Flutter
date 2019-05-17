@@ -1,11 +1,22 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
+import 'package:snatok/models/user.dart';
 
-class AdModel extends Model {
+class MergedModel extends Model {
   final List<Ad> _products = [];
+  User _authenticatedUser;
+
+  void addAd(Ad product) {
+    product.id = (_authenticatedUser.id);
+    product.email = _authenticatedUser.email;
+    _products.add(product);
+  }
+}
+
+class AdModel extends MergedModel {
   bool _showFav = false;
 
-  List<Ad> get products {
+  List<Ad> get AllProducts {
     return List.from(_products);
   }
 
@@ -18,10 +29,6 @@ class AdModel extends Model {
 
   bool get displayMode {
     return _showFav;
-  }
-
-  void addAd(Ad product) {
-    _products.add(product);
   }
 
   void deleteAd(int index) {
@@ -42,5 +49,14 @@ class AdModel extends Model {
   void toggleDisplayMode() {
     _showFav = !_showFav;
     notifyListeners();
+  }
+}
+
+class UserModel extends MergedModel {
+  // _ variable indicates we should not access it from outside
+
+  void login(String email, String password) {
+    _authenticatedUser =
+        new User(id: 'dummy', email: email, password: password);
   }
 }

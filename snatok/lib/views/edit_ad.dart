@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
-import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/scoped-models/main.dart';
 
 class EditAd extends StatefulWidget {
@@ -32,7 +31,7 @@ class _EditAdState extends State<EditAd> {
   Widget buildTitleTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: model.products[index].title,
+      initialValue: model.AllProducts[index].title,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(labelText: 'Title'),
       validator: (String value) {
@@ -48,7 +47,7 @@ class _EditAdState extends State<EditAd> {
   Widget buildDescriptionTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: model.products[index].description,
+      initialValue: model.AllProducts[index].description,
       keyboardType: TextInputType.text,
       validator: (String value) {
         if (value.trim().length <= 0) return 'Description is required';
@@ -64,7 +63,7 @@ class _EditAdState extends State<EditAd> {
   Widget buildLocationTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: model.products[index].location,
+      initialValue: model.AllProducts[index].location,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(labelText: 'Location'),
       validator: (String value) {
@@ -80,7 +79,7 @@ class _EditAdState extends State<EditAd> {
   Widget buildPriceTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
-      initialValue: model.products[index].price.toString(),
+      initialValue: model.AllProducts[index].price.toString(),
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: 'Price'),
       validator: (String value) {

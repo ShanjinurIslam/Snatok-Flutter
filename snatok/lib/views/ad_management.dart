@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:snatok/models/ad.dart';
 import 'create_ad.dart';
 import 'manage_ad.dart';
 
 class AdManagement extends StatefulWidget {
-
   @override
   _AdManagementState createState() => _AdManagementState();
 }
