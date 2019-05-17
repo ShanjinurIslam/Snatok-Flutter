@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/widgets/ads/ads.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,8 +19,8 @@ class _HomeState extends State<HomePage> {
   }
 
   Widget toggleFav() {
-    return ScopedModelDescendant<AdModel>(
-      builder: (BuildContext context, Widget child, AdModel model) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         return IconButton(
           icon:
               Icon(model.displayMode ? Icons.favorite : Icons.favorite_border),

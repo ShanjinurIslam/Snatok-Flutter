@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
-import 'package:snatok/scoped-models/user.dart';
+import 'package:snatok/scoped-models/main.dart';
 
 class AuthPageView extends StatefulWidget {
   @override
@@ -86,21 +86,21 @@ class _AuthPageState extends State<AuthPageView> {
   }
 
   Widget _logIn() {
-    return ScopedModelDescendant<UserModel>(builder: (BuildContext context, Widget child, UserModel model) {
-      return FlatButton(
-                            child: Text(
-                              'Log In',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            onPressed:(){ 
-                              model.login(username, password) ;
-                              Navigator.pushReplacementNamed(context, '/home'); 
-                            },
-                            color: Colors.green,
-                          ) ; 
-    },) ;
-
-    
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
+        return FlatButton(
+          child: Text(
+            'Log In',
+            style: TextStyle(color: Colors.white),
+          ),
+          onPressed: () {
+            model.login(username, password);
+            Navigator.pushReplacementNamed(context, '/home');
+          },
+          color: Colors.green,
+        );
+      },
+    );
   }
 
   @override
@@ -135,7 +135,7 @@ class _AuthPageState extends State<AuthPageView> {
                               borderRadius: BorderRadius.circular(10),
                               color: Colors.green,
                               border: Border.all(color: Colors.white)),
-                          child: ,
+                          child: _logIn(),
                         ),
                       ],
                     ))),

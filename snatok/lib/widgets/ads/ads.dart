@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
 import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/widgets/ads/ad_card.dart';
 
 class Ads extends StatelessWidget {
@@ -23,8 +24,8 @@ class Ads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<AdModel>(
-        builder: (BuildContext context, Widget child, AdModel model) {
+    return ScopedModelDescendant<MainModel>(
+        builder: (BuildContext context, Widget child, MainModel model) {
       return _buildProductList(model.displayProducts);
     });
   }

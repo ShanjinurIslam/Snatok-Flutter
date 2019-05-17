@@ -24,18 +24,16 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   scoped_model: ^1.0.1
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -59,10 +57,10 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-     - family: Oswald
-       fonts:
-         - asset: assets/Oswald-Regular.ttf
-           weight: 700
+    - family: Oswald
+      fonts:
+        - asset: assets/Oswald-Regular.ttf
+          weight: 700
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
@@ -73,3 +71,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.io/custom-fonts/#from-packages
+analyzer:
+  strong-mode: true
+  language:
+    enableSuperMixins: true
+  errors:
+    mixin_inherits_from_not_object: ignore

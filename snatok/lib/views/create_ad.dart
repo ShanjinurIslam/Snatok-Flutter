@@ -3,6 +3,7 @@ import 'package:snatok/models/ad.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/models/ad.dart';
+import 'package:snatok/scoped-models/main.dart';
 
 class CreateAd extends StatefulWidget {
   @override
@@ -92,13 +93,12 @@ class _CreateAdState extends State<CreateAd> {
         location: location,
         price: price,
         image: 'assets/1.jpg'));
-      Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/home');
   }
 
   Widget _buildSubmitButton() {
-
     return ScopedModelDescendant(
-      builder: (BuildContext context, Widget child, AdModel model) {
+      builder: (BuildContext context, Widget child, MainModel model) {
         return IconButton(
             color: Colors.red,
             onPressed: () => _onSubmit(model.addAd),

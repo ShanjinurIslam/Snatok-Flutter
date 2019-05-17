@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/views/edit_ad.dart';
 import 'views/auth.dart';
 import 'views/edit_ad.dart';
@@ -24,8 +25,8 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModel<AdModel>(
-        model: AdModel(),
+    return ScopedModel<MainModel>(
+        model: MainModel(),
         child: MaterialApp(
           routes: {
             '/': (BuildContext context) => AuthPageView(),

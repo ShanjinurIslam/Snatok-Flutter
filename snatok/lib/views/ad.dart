@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/widgets/ads/ad_address.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
 import 'dart:async'; //for returning future values
@@ -48,8 +49,8 @@ class SingleAd extends StatelessWidget {
   Widget build(BuildContext context) {
     /**/
 
-    return ScopedModelDescendant<AdModel>(
-      builder: (BuildContext context, Widget child, AdModel model) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         return WillPopScope(
           child: Scaffold(
             appBar: AppBar(

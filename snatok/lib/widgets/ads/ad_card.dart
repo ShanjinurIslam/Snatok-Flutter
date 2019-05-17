@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
 import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/widgets/ads/price_tag.dart';
 import 'package:snatok/widgets/ui_elements/ad_title.dart';
 import 'package:snatok/widgets/ads/ad_address.dart';
@@ -17,8 +18,8 @@ class AdCard extends StatelessWidget {
   }
 
   Widget favIcon(BuildContext context) {
-    return ScopedModelDescendant<AdModel>(
-      builder: (BuildContext context, Widget child, AdModel model) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         return IconButton(
           onPressed: () {
             model.toggleAdFavorite(index);

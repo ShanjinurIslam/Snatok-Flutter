@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
 import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/scoped-models/main.dart';
 
 class EditAd extends StatefulWidget {
   final int index;
@@ -28,7 +29,7 @@ class _EditAdState extends State<EditAd> {
     super.initState();
   }
 
-  Widget buildTitleTextFormField(AdModel model) {
+  Widget buildTitleTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
       initialValue: model.products[index].title,
@@ -44,7 +45,7 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  Widget buildDescriptionTextFormField(AdModel model) {
+  Widget buildDescriptionTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
       initialValue: model.products[index].description,
@@ -60,7 +61,7 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  Widget buildLocationTextFormField(AdModel model) {
+  Widget buildLocationTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
       initialValue: model.products[index].location,
@@ -76,7 +77,7 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  Widget buildPriceTextFormField(AdModel model) {
+  Widget buildPriceTextFormField(MainModel model) {
     return TextFormField(
       autofocus: true,
       initialValue: model.products[index].price.toString(),
@@ -92,7 +93,7 @@ class _EditAdState extends State<EditAd> {
     );
   }
 
-  void _onSubmit(AdModel model) {
+  void _onSubmit(MainModel model) {
     if (!globalKey.currentState.validate()) return;
     globalKey.currentState.save();
     model.replaceAd(
@@ -106,8 +107,8 @@ class _EditAdState extends State<EditAd> {
   }
 
   Widget getForm() {
-    return ScopedModelDescendant<AdModel>(
-      builder: (BuildContext context, Widget child, AdModel model) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         return Form(
             key: globalKey,
             child: ListView(

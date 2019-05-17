@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/scoped-models/ads.dart';
+import 'package:snatok/scoped-models/main.dart';
 
 class ManageAd extends StatefulWidget {
   @override
@@ -17,8 +18,8 @@ class _ManageAdState extends State<ManageAd> {
 
   @override
   Widget build(BuildContext context) {
-    return ScopedModelDescendant<AdModel>(
-      builder: (BuildContext context, Widget child, AdModel model) {
+    return ScopedModelDescendant<MainModel>(
+      builder: (BuildContext context, Widget child, MainModel model) {
         return ListView.builder(
           itemBuilder: (BuildContext context, int index) {
             return Column(
