@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
-import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/widgets/ads/ad_card.dart';
 

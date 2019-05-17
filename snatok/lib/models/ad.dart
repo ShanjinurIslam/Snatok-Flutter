@@ -7,8 +7,8 @@ class Ad {
   final double price;
   final String image;
   bool isFavorite;
-  String id;
-  String email;
+  String id = "";
+  String email = "";
 
   Ad(
       {this.isFavorite = false,
@@ -19,4 +19,17 @@ class Ad {
       @required this.image,
       this.id,
       this.email});
+
+  Map<String, dynamic> getAdData() {
+    return {
+      'title': this.title,
+      'description': this.description,
+      'location': this.location,
+      'price': this.price,
+      'image': this.image,
+      'isFavorite': this.isFavorite,
+      'id': this.id,
+      'email': this.email,
+    };
+  }
 }

@@ -1,6 +1,8 @@
 import 'package:scoped_model/scoped_model.dart';
 import 'package:snatok/models/ad.dart';
 import 'package:snatok/models/user.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class MergedModel extends Model {
   final List<Ad> _products = [];
@@ -10,6 +12,11 @@ class MergedModel extends Model {
     product.id = (_authenticatedUser.id);
     product.email = _authenticatedUser.email;
     _products.add(product);
+
+    Map<String, dynamic> productMap = product.getAdData();
+    http.post('https://snatok-flutter.firebaseio.com/ads.json',
+        body: jsonEncode(productMap));
+    ;
   }
 }
 

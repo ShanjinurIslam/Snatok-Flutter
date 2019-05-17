@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:snatok/scoped-models/ads.dart';
 import 'package:snatok/scoped-models/main.dart';
 import 'package:snatok/views/edit_ad.dart';
 import 'views/auth.dart';
