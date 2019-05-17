@@ -14,13 +14,16 @@ class AdModel extends Model {
 
   void deleteAd(int index) {
     _products.removeAt(index);
+    notifyListeners();
   }
 
   void replaceAd(int index, Ad product) {
     _products[index] = product;
+    notifyListeners();
   }
 
   void toggleAdFavorite(int index) {
     _products[index].isFavorite = !_products[index].isFavorite;
+    notifyListeners();
   }
 }

@@ -28,8 +28,7 @@ class _ManageAdState extends State<ManageAd> {
                     backgroundImage: AssetImage(model.products[index].image),
                   ),
                   title: Text(model.products[index].title),
-                  subtitle:
-                      Text('\৳' + model.products[index].price.toString()),
+                  subtitle: Text('\৳' + model.products[index].price.toString()),
                   trailing: ButtonBar(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -53,7 +52,7 @@ class _ManageAdState extends State<ManageAd> {
                                     FlatButton(
                                       onPressed: () {
                                         model.deleteAd(index);
-                                        Navigator.popAndPushNamed(context,'/manageads') ;
+                                        Navigator.pop(context);
                                       },
                                       child: Text('Yes'),
                                     ),

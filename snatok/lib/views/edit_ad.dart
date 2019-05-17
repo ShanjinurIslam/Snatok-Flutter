@@ -103,7 +103,6 @@ class _EditAdState extends State<EditAd> {
             location: location,
             price: price,
             image: 'assets/1.jpg'));
-    Navigator.pushReplacementNamed(context, '/home');
   }
 
   Widget getForm() {
